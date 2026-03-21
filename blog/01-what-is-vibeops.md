@@ -1,6 +1,6 @@
 ---
 title: "VibeOps: The Missing Governance Layer in Agentic Coding"
-published: false
+published: true
 tags: ai, devops, productivity, webdev
 series: VibeOps
 canonical_url: https://vibeopscentral.ai
