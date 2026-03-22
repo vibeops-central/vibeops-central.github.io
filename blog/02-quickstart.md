@@ -35,10 +35,17 @@ Paste the contents of `AGENTS.md` into your project context or system prompt.
 
 ---
 
-## Step 2 — Clone the Template
+## Step 2 — Get the Template
 
+Go to the repo and click **"Use this template" → "Create a new repository"**
+
+👉 https://github.com/vibeops-central/fastapi-vibeops-template
+
+This creates a fresh repo in your account with no git history — clean slate, ready to build.
+
+Or via GitHub CLI:
 ```bash
-git clone https://github.com/vibeops-central/fastapi-vibeops-template.git my-project
+gh repo create my-project --template vibeops-central/fastapi-vibeops-template
 cd my-project
 ```
 
