@@ -25,16 +25,17 @@ This template ships with VibeOps governance baked in — no extra setup needed.
 
 ## Step 2 — Set Up Your Environment
 
-```bash
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-```
-
-> **`requirements.txt` is generated automatically** when you first run the project or via your AI agent reading `AGENTS.md`. No manual dependency hunting needed — that's VibeOps working.
+This template uses **`uv`** for dependency management — not pip directly.
 
 ```bash
-pip install -r requirements.txt
+# Install uv if you don't have it
+curl -Ls https://astral.sh/uv/install.sh | sh
+
+# Install all dependencies (auto-resolved from pyproject.toml)
+uv sync
 ```
+
+> No `requirements.txt` to manage — `uv sync` handles everything automatically from `pyproject.toml`. That's VibeOps working.
 
 ---
 
@@ -74,16 +75,15 @@ Paste the contents of AGENTS.md into your system prompt or project context.
 
 ## Step 5 — Run Your First Vibecheck
 
-A Vibecheck scores how well your project is set up for agentic development.
+A Vibecheck scores how well your project is set up for agentic development. It's built into the template:
 
 ```bash
-# Coming soon: vibeops CLI
-# For now, self-assess using the checklist at vibeopscentral.ai/vibecheck
+uv run vibecheck .
 ```
 
-A score of **7/12 or above** means your agent will produce consistent, high-quality output.
+A score of **7/12 or above** means your agent will produce consistent, high-quality output. A low score means you're fighting your tools.
 
----
+Want to improve your score? Read the [12 Vibing Factors](https://vibeopscentral.ai).
 
 ## What You Now Have
 
