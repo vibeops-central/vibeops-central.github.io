@@ -38,7 +38,7 @@ Paste the contents of `AGENTS.md` into your project context or system prompt.
 ## Step 2 — Clone the Template
 
 ```bash
-git clone https://github.com/natulauchande/fastapi-vibeops-template.git my-project
+git clone https://github.com/vibeops-central/fastapi-vibeops-template.git my-project
 cd my-project
 ```
 
@@ -140,7 +140,7 @@ That's what governed agentic development looks like.
 
 ## Next Steps
 
-- ⭐ [Star the template on GitHub](https://github.com/natulauchande/fastapi-vibeops-template)
+- ⭐ [Star the template on GitHub](https://github.com/vibeops-central/fastapi-vibeops-template)
 - 📖 Read the [12 Vibing Factors](https://vibeopscentral.ai)
 - 💬 Share your Vibecheck score with `#VibeOps`
 
