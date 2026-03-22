@@ -23,11 +23,16 @@ This template ships with VibeOps governance baked in — no extra setup needed.
 
 ---
 
-## Step 2 — Install Dependencies
+## Step 2 — Set Up Your Environment
 
 ```bash
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
+```
+
+> **`requirements.txt` is generated automatically** when you first run the project or via your AI agent reading `AGENTS.md`. No manual dependency hunting needed — that's VibeOps working.
+
+```bash
 pip install -r requirements.txt
 ```
 
