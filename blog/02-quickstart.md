@@ -1,135 +1,148 @@
 ---
-title: "VibeOps Quickstart: Run a Governed FastAPI Project in 5 Minutes"
+title: "VibeOps Quickstart: From Clone to Governed Agent in 5 Minutes"
 published: true
 tags: fastapi, python, ai, devops
 series: VibeOps
-canonical_url: https://vibeopscentral.ai
+canonical_url: https://vibeopscentral.ai/quickstart
 ---
 
-You've heard about VibeOps — the governance layer for agentic coding. Now let's get it running.
+You've heard about VibeOps. Here's how it actually feels to use it.
 
-This quickstart gets you from zero to a fully governed, AI-ready FastAPI project in under 5 minutes.
-
-## Prerequisites
-
-- Python 3.11+
-- An AI coding assistant (Claude, Cursor, Copilot — your choice)
-- Git
+Five minutes. Real interaction. No hand-waving.
 
 ---
 
-## Step 1 — Clone the FastAPI Template
+## Step 1 — Configure Your Code Agent
+
+VibeOps works with whatever AI coding tool you already use.
+
+**Claude Code**
+```bash
+# CLAUDE.md in the repo root is a symlink to AGENTS.md
+# Claude reads it automatically — nothing to configure
+```
+
+**Cursor**
+Add to your `.cursorrules`:
+```
+Always read AGENTS.md at the start of every session before writing any code.
+```
+
+**Windsurf / Copilot / any tool with a system prompt**
+Paste the contents of `AGENTS.md` into your project context or system prompt.
+
+> The rule: your agent needs to read `AGENTS.md` before it does anything. That's it.
+
+---
+
+## Step 2 — Clone the Template
 
 ```bash
 git clone https://github.com/natulauchande/fastapi-vibeops-template.git my-project
 cd my-project
 ```
 
-This template ships with VibeOps governance baked in — no extra setup needed.
+The template ships with `AGENTS.md` already written — a full agent constitution covering architecture, conventions, hard constraints, and the Feature Kickoff Protocol.
+
+Open it. Read it. It's the most important file in the repo.
 
 ---
 
-## Step 2 — Set Up Your Environment
+## Step 3 — Fire Up Your Agent
 
-This template uses **`uv`** for dependency management — not pip directly.
+Open the project in your tool of choice and start a new session.
 
-```bash
-# Install uv if you don't have it
-curl -Ls https://astral.sh/uv/install.sh | sh
+Your agent will read `AGENTS.md` and know:
+- The stack (FastAPI, PostgreSQL, SQLAlchemy 2.0 async, Redis)
+- The patterns to follow
+- The mistakes it's not allowed to make
+- How to handle new feature requests
 
-# Install all dependencies (auto-resolved from pyproject.toml)
-uv sync
+Now give it something real to build.
+
+---
+
+## Step 4 — Prompt Your App
+
+Here's where VibeOps earns its keep. Try this:
+
+> **You:** `New feature: user registration and JWT authentication`
+
+A *non-governed* agent starts writing code immediately.
+
+A *VibeOps-governed* agent does this instead:
+
+---
+
+**Agent:** *Entering design mode. No code yet.*
+
+I'll produce a spec and test scenarios for your review before writing anything.
+
+**`specs/auth.md`** (excerpt):
+```markdown
+## Feature: User Registration & JWT Auth
+
+### Scope
+- POST /auth/register — create user, hash password with bcrypt
+- POST /auth/login — validate credentials, return JWT access token
+- JWT: RS256, 30-min expiry, user_id + roles in payload
+
+### Hard constraints (from AGENTS.md)
+- Use bcrypt directly — no passlib
+- All DB calls via async SQLAlchemy session
+- No synchronous code in async routes
 ```
 
-No `requirements.txt` to manage. `uv sync` resolves everything automatically from `pyproject.toml`.
+**`tests/bdd/features/auth.feature`** (excerpt):
+```gherkin
+Feature: User Authentication
 
-That's VibeOps working — even your dependency management is governed.
+  Scenario: Successful registration
+    Given no user exists with email "dev@example.com"
+    When I POST /auth/register with valid credentials
+    Then the response status is 201
+    And a user record exists in the database
 
----
-
-## Step 3 — Meet Your AGENTS.md
-
-Open `AGENTS.md`. This is your **agent constitution** — the file that tells your AI assistant:
-
-- What this project is and how it's structured
-- Which conventions to follow
-- What mistakes to **never** repeat
-- How to behave consistently across sessions
-
-> This file is the heart of VibeOps. Edit it before you write a single line of code.
-
-At minimum, update:
-- **Section 1 (Project Overview)** — describe what you're building
-- **Section 4 (Architecture)** — confirm your design patterns
-- **Section 5 (Hard Constraints)** — add any non-negotiables for your project
-
----
-
-## Step 4 — Wire Up Your AI Tool
-
-**Claude / Claude.ai**
-`CLAUDE.md` in the repo root is a symlink to `AGENTS.md`. You're already set — Claude reads it automatically.
-
-**Cursor**
-Add to `.cursorrules`:
-```
-Read AGENTS.md before every response.
+  Scenario: Login with valid credentials
+    Given a user exists with email "dev@example.com"
+    When I POST /auth/login with correct password
+    Then the response status is 200
+    And the response contains an access_token
 ```
 
-**Copilot / other tools**
-Paste the contents of `AGENTS.md` into your system prompt or project context.
+*Spec and scenarios are ready. Reply **"proceed"** to begin implementation.*
 
 ---
 
-## Step 5 — Run Your First Vibecheck
+**You:** `proceed`
 
-A Vibecheck scores how well your project is set up for agentic development:
+**Agent:** *Implementing...*
+- `src/models/user.py` — SQLAlchemy User model
+- `src/routers/auth.py` — register + login endpoints
+- `src/services/auth_service.py` — bcrypt hashing, JWT generation
+- `tests/bdd/steps/auth_steps.py` — BDD step definitions
 
-```bash
-uv run vibecheck .
-```
-
-A score of **7/12 or above** means your agent will produce consistent, high-quality output with fewer corrections.
-
-A low score means you're fighting your tools.
+*All tests passing. No passlib. No sync code in async routes. Vibecheck: 10/12.*
 
 ---
 
-## What You Now Have
-
-| File | What it does |
-|------|--------------|
-| `AGENTS.md` | Your agent's persistent identity, rules, and memory |
-| `CLAUDE.md` | Symlink → AGENTS.md for Claude Code compatibility |
-| `src/` | FastAPI project structure, ready to build |
-| `specs/` | Where your technical design docs live |
-| `tests/bdd/` | Gherkin-first test structure |
+That's the loop. Spec → Gherkin → Approval → Code. Every time.
 
 ---
 
-## What Happens Next (The VibeOps Way)
+## Why It Works
 
-Now try giving your AI agent a real task:
+The agent didn't guess at your conventions. It didn't invent its own patterns. It read `AGENTS.md`, knew the rules, and followed them — without you having to repeat yourself.
 
-> *"Build a user management and permissions system"*
-
-A VibeOps-governed agent won't just start writing code. It will:
-
-1. **Enter design mode** — no code yet
-2. **Produce a technical spec** → `specs/user-management.md`
-3. **Produce Gherkin scenarios** → `tests/bdd/features/user-management.feature`
-4. **Wait for your approval** before writing a single line
-5. Only **proceed** when you say so
-
-That's the difference between a vibing agent and a **governed** agent.
+That's what governed agentic development looks like.
 
 ---
 
 ## Next Steps
 
 - ⭐ [Star the template on GitHub](https://github.com/natulauchande/fastapi-vibeops-template)
-- 📖 Read the [12 Vibing Factors](https://vibeopscentral.ai) — the governance checklist for agentic projects
-- 🏆 Share your Vibecheck Score with `#VibeOps`
+- 📖 Read the [12 Vibing Factors](https://vibeopscentral.ai)
+- 💬 Share your Vibecheck score with `#VibeOps`
 
 ---
 

@@ -416,60 +416,52 @@
 <section class="sec qs-bg" id="quickstart">
   <div class="sec-inner">
     <p class="eyebrow" style="color:var(--gold)">Quickstart</p>
-    <h2 style="color:var(--cream)">Governed in 5 minutes</h2>
-    <p class="sec-sub" style="color:rgba(245,242,236,.5)">Clone the FastAPI template and get your first AI-ready, VibeOps-governed project running before your coffee goes cold.</p>
+    <h2 style="color:var(--cream)">From clone to governed agent in 5 minutes</h2>
+    <p class="sec-sub" style="color:rgba(245,242,236,.5)">Configure your agent. Clone the template. Prompt your app. Watch governance kick in.</p>
 
     <div class="qs-steps">
       <div class="qs-step">
         <p class="qs-num">STEP 01</p>
-        <p class="qs-title">Clone the template</p>
-        <p class="qs-desc">The FastAPI VibeOps template ships with AGENTS.md, CLAUDE.md, specs/, and BDD test structure — governance baked in from commit zero.</p>
+        <p class="qs-title">Configure your code agent</p>
+        <p class="qs-desc">Claude Code reads <code style="font-family:var(--mono);font-size:.82em;color:var(--gold3)">CLAUDE.md</code> automatically. Cursor: add one line to <code style="font-family:var(--mono);font-size:.82em;color:var(--gold3)">.cursorrules</code>. Any tool: paste AGENTS.md into your system prompt. One rule: read it before doing anything.</p>
       </div>
       <div class="qs-step">
         <p class="qs-num">STEP 02</p>
-        <p class="qs-title">Sync dependencies</p>
-        <p class="qs-desc">Uses <code style="font-family:var(--mono);font-size:.82em;color:var(--gold3)">uv</code> for dependency management. One command resolves everything from <code style="font-family:var(--mono);font-size:.82em;color:var(--gold3)">pyproject.toml</code> — no requirements.txt to manage.</p>
+        <p class="qs-title">Clone the template</p>
+        <p class="qs-desc">Ships with AGENTS.md pre-written — architecture, conventions, hard constraints, and the Feature Kickoff Protocol. Open it. It's the most important file in the repo.</p>
       </div>
       <div class="qs-step">
         <p class="qs-num">STEP 03</p>
-        <p class="qs-title">Edit AGENTS.md</p>
-        <p class="qs-desc">Your agent constitution. Describe your project, define your conventions, set your hard constraints. Your AI reads this every session.</p>
+        <p class="qs-title">Fire up your agent</p>
+        <p class="qs-desc">Open the project in your tool of choice and start a session. Your agent now knows the stack, the patterns, the constraints — without you having to repeat yourself.</p>
       </div>
       <div class="qs-step">
         <p class="qs-num">STEP 04</p>
-        <p class="qs-title">Wire your AI tool</p>
-        <p class="qs-desc">Claude picks up CLAUDE.md automatically. Cursor users add one line to <code style="font-family:var(--mono);font-size:.82em;color:var(--gold3)">.cursorrules</code>. Works with any coding agent.</p>
-      </div>
-      <div class="qs-step">
-        <p class="qs-num">STEP 05</p>
-        <p class="qs-title">Run your Vibecheck</p>
-        <p class="qs-desc">Score your project on the 12 Vibing Factors. 7/12 or above means your agent produces consistent, high-quality output with fewer corrections.</p>
+        <p class="qs-title">Prompt your app</p>
+        <p class="qs-desc">Say: <em style="color:var(--gold3)">"New feature: user registration and JWT auth"</em> — and watch what a governed agent does differently.</p>
       </div>
     </div>
 
     <div class="qs-code">
-      <pre><span class="comment"># 1. Clone</span>
+      <pre><span class="comment"># Clone</span>
 <span class="cmd">git clone</span> https://github.com/natulauchande/fastapi-vibeops-template.git my-project
 <span class="cmd">cd</span> my-project
 
-<span class="comment"># 2. Install dependencies</span>
-<span class="cmd">uv sync</span>
+<span class="comment"># Open in your agent and start a session, then prompt:</span>
+<span class="comment"># "New feature: user registration and JWT auth"</span>
 
-<span class="comment"># 3. Edit your agent constitution</span>
-<span class="cmd">open</span> AGENTS.md
-
-<span class="comment"># 4. Start building (governed)</span>
-<span class="cmd">uv run uvicorn</span> src.main:app --reload
-
-<span class="comment"># 5. Score your project</span>
-<span class="cmd">uv run vibecheck</span> .</pre>
+<span class="comment"># A governed agent responds:</span>
+<span class="comment"># → Entering design mode. No code yet.</span>
+<span class="comment"># → Producing specs/auth.md</span>
+<span class="comment"># → Producing tests/bdd/features/auth.feature</span>
+<span class="comment"># → "Reply proceed to begin implementation."</span></pre>
     </div>
 
     <div class="qs-cta">
       <a class="btn-gold" href="https://github.com/natulauchande/fastapi-vibeops-template" target="_blank">Get the template ↗</a>
-      <a class="btn-outline" href="https://dev.to/nlauchande/vibeops-quickstart-run-a-governed-fastapi-project-in-5-minutes-19f4" target="_blank" style="border-color:rgba(201,168,76,.3);color:rgba(245,242,236,.6)">Read the guide on DEV.to ↗</a>
+      <a class="btn-outline" href="https://dev.to/nlauchande/vibeops-quickstart-run-a-governed-fastapi-project-in-5-minutes-19f4" target="_blank" style="border-color:rgba(201,168,76,.3);color:rgba(245,242,236,.6)">Full walkthrough on DEV.to ↗</a>
     </div>
-    <p class="qs-note">Prerequisites: Python 3.11+ · Git · An AI coding assistant (Claude, Cursor, Copilot)</p>
+    <p class="qs-note">Works with: Claude Code · Cursor · Windsurf · Copilot · any agent with a system prompt</p>
   </div>
 </section>
 
