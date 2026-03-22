@@ -154,6 +154,20 @@
     .protocol-title{font-family:var(--serif);font-size:1.45rem;color:var(--navy);margin-bottom:.45rem;font-weight:600}
     .protocol-body{color:var(--dim);font-size:.9rem;line-height:1.75;margin-bottom:1.25rem}
 
+    /* ── QUICKSTART ── */
+    .qs-bg{background:var(--navy);color:var(--cream)}
+    .qs-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem}
+    .qs-step{background:rgba(245,242,236,.04);border:1px solid rgba(201,168,76,.15);border-radius:2px;padding:2rem}
+    .qs-num{font-family:var(--mono);font-size:.65rem;color:var(--gold);letter-spacing:.12em;margin-bottom:.75rem}
+    .qs-title{font-family:var(--serif);font-size:1.2rem;color:var(--cream);font-weight:600;margin-bottom:.5rem}
+    .qs-desc{font-size:.88rem;color:rgba(245,242,236,.55);line-height:1.7}
+    .qs-code{background:rgba(0,0,0,.4);border:1px solid rgba(201,168,76,.1);border-radius:2px;padding:1.25rem 1.5rem;margin-top:2.5rem;overflow-x:auto}
+    .qs-code pre{font-family:var(--mono);font-size:.78rem;color:rgba(245,242,236,.8);line-height:1.8;white-space:pre}
+    .qs-code .comment{color:rgba(201,168,76,.5)}
+    .qs-code .cmd{color:var(--gold3)}
+    .qs-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.5rem;align-items:center}
+    .qs-note{font-family:var(--mono);font-size:.68rem;color:rgba(245,242,236,.3);margin-top:1rem}
+
     /* ── TASTE QUOTE ── */
     .taste-quote{background:var(--navy);padding:5rem 2.5rem;border-top:1px solid rgba(201,168,76,.15)}
     .taste-inner{max-width:760px;margin:0 auto;text-align:center}
@@ -196,6 +210,7 @@
   <ul class="nav-links">
     <li><a href="#what">Framework</a></li>
     <li><a href="#factors">12 Factors</a></li>
+    <li><a href="#quickstart">Quickstart</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#paper">Paper</a></li>
   </ul>
@@ -394,6 +409,67 @@
       <div class="ritem"><span class="phase-tag">Phase 4</span><span class="phase-desc">MLflow experiment integration — track Vibecheck Score over time</span><span class="phase-badge planned">Planned</span></div>
       <div class="ritem"><span class="phase-tag">Phase 5</span><span class="phase-desc">Self-optimising AGENTS.md via DSPy</span><span class="phase-badge future">Future</span></div>
     </div>
+  </div>
+</section>
+
+<!-- QUICKSTART -->
+<section class="sec qs-bg" id="quickstart">
+  <div class="sec-inner">
+    <p class="eyebrow" style="color:var(--gold)">Quickstart</p>
+    <h2 style="color:var(--cream)">Governed in 5 minutes</h2>
+    <p class="sec-sub" style="color:rgba(245,242,236,.5)">Clone the FastAPI template and get your first AI-ready, VibeOps-governed project running before your coffee goes cold.</p>
+
+    <div class="qs-steps">
+      <div class="qs-step">
+        <p class="qs-num">STEP 01</p>
+        <p class="qs-title">Clone the template</p>
+        <p class="qs-desc">The FastAPI VibeOps template ships with AGENTS.md, CLAUDE.md, specs/, and BDD test structure — governance baked in from commit zero.</p>
+      </div>
+      <div class="qs-step">
+        <p class="qs-num">STEP 02</p>
+        <p class="qs-title">Sync dependencies</p>
+        <p class="qs-desc">Uses <code style="font-family:var(--mono);font-size:.82em;color:var(--gold3)">uv</code> for dependency management. One command resolves everything from <code style="font-family:var(--mono);font-size:.82em;color:var(--gold3)">pyproject.toml</code> — no requirements.txt to manage.</p>
+      </div>
+      <div class="qs-step">
+        <p class="qs-num">STEP 03</p>
+        <p class="qs-title">Edit AGENTS.md</p>
+        <p class="qs-desc">Your agent constitution. Describe your project, define your conventions, set your hard constraints. Your AI reads this every session.</p>
+      </div>
+      <div class="qs-step">
+        <p class="qs-num">STEP 04</p>
+        <p class="qs-title">Wire your AI tool</p>
+        <p class="qs-desc">Claude picks up CLAUDE.md automatically. Cursor users add one line to <code style="font-family:var(--mono);font-size:.82em;color:var(--gold3)">.cursorrules</code>. Works with any coding agent.</p>
+      </div>
+      <div class="qs-step">
+        <p class="qs-num">STEP 05</p>
+        <p class="qs-title">Run your Vibecheck</p>
+        <p class="qs-desc">Score your project on the 12 Vibing Factors. 7/12 or above means your agent produces consistent, high-quality output with fewer corrections.</p>
+      </div>
+    </div>
+
+    <div class="qs-code">
+      <pre><span class="comment"># 1. Clone</span>
+<span class="cmd">git clone</span> https://github.com/natulauchande/fastapi-vibeops-template.git my-project
+<span class="cmd">cd</span> my-project
+
+<span class="comment"># 2. Install dependencies</span>
+<span class="cmd">uv sync</span>
+
+<span class="comment"># 3. Edit your agent constitution</span>
+<span class="cmd">open</span> AGENTS.md
+
+<span class="comment"># 4. Start building (governed)</span>
+<span class="cmd">uv run uvicorn</span> src.main:app --reload
+
+<span class="comment"># 5. Score your project</span>
+<span class="cmd">uv run vibecheck</span> .</pre>
+    </div>
+
+    <div class="qs-cta">
+      <a class="btn-gold" href="https://github.com/natulauchande/fastapi-vibeops-template" target="_blank">Get the template ↗</a>
+      <a class="btn-outline" href="https://dev.to/natulauchande" target="_blank" style="border-color:rgba(201,168,76,.3);color:rgba(245,242,236,.6)">Read the guide on DEV.to ↗</a>
+    </div>
+    <p class="qs-note">Prerequisites: Python 3.11+ · Git · An AI coding assistant (Claude, Cursor, Copilot)</p>
   </div>
 </section>
 
